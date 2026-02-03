@@ -22,7 +22,8 @@ CREATE TABLE stocks(
 );
 
 --Inserer des stocks
-INSERT INTO stocks(50,30,80,22)
+INSERT INTO stocks(quantite_actuelle)
+VALUES (50), (30), (80), (22)
 
 --Création de la table livres
 CREATE TABLE livres(
@@ -33,7 +34,7 @@ CREATE TABLE livres(
     genre VARCHAR(20) NOT NULL,
     prix INT NOT NULL,
     id_stock INT NOT NULL,
-    FOREIGN KEY id_stock REFERENCES stocks(id_stock)
+    FOREIGN KEY (id_stock) REFERENCES stocks(id_stock)
 );
 
 --Ajouter des livres 
@@ -44,3 +45,22 @@ INSERT INTO livres VALUES
 ("Atomic Habit","James clear","Oreilly","14000",3)
 ("Think python","Allen B. Downey","Oreilly","12000",4)
 
+--Creer la table Mouvement_stock
+
+CREATE TABLE mouvement_stock(
+    id_mouvement_stock INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    quantite_mouvement INT NOT NULL,
+    type_mouvement VARCHAR(10) NOT NULL,
+    prix_unitaire INT NOT NULL,
+    id_stock INT NOT NULL,
+    id_livre INT NOT NULL,
+    FOREIGN KEY id_stock REFERENCES stocks(id_stock),
+    FOREIGN KEY id_livre REFERENCES livres(id_livre)
+);
+
+--  Inserer les données dans la table mouvement_stock 
+-- consulter l’historique des mouvements de stock
+
+INSERT INTO mouvement_stock VALUES
+(20,'entree',5000,1,1)
+(20,'sortie',5000,1,1)
