@@ -11,9 +11,9 @@ CREATE TABLE fournisseurs(
 
 --enregistrer les fournisseurs
 INSERT INTO fournisseurs(nom_fournisseur,prenom_fournisseur,adresse_fournisseur) VALUES
-("jean","lepain","je@gmail.com")
-("freid","lapaix","freid@gmail.com")
-("junior","lebox","jl@gmail.com")
+("jean","lepain","je@gmail.com"),
+("freid","lapaix","freid@gmail.com"),
+("junior","lebox","jl@gmail.com");
 
 --Creation de la table stocks
 CREATE TABLE stocks(
@@ -28,10 +28,10 @@ VALUES (50), (30), (80), (22)
 --Création de la table livres
 CREATE TABLE livres(
     id_livre INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    titre VARCHAR(20) NOT NULL,
-    auteur VARCHAR(20) NOT NULL,
-    editeur VARCHAR(20) NOT NULL,
-    genre VARCHAR(20) NOT NULL,
+    titre TEXT(50) NOT NULL,
+    auteur TEXT(50) NOT NULL,
+    editeur TEXT(20) NOT NULL,
+    genre TEXT(50) NOT NULL,
     prix INT NOT NULL,
     id_stock INT NOT NULL,
     FOREIGN KEY (id_stock) REFERENCES stocks(id_stock)
@@ -39,11 +39,11 @@ CREATE TABLE livres(
 
 --Ajouter des livres 
 
-INSERT INTO livres VALUES 
-("Le petit prince"," Antoine de Saint-Exupéry","Oreilly","5000",1)
-("Un rien peut tout changer","James Clear","Oreilly","15000",2)
-("Atomic Habit","James clear","Oreilly","14000",3)
-("Think python","Allen B. Downey","Oreilly","12000",4)
+INSERT INTO livres (titre,auteur,editeur,genre,prix,id_stock) 
+VALUES ("Le petit prince"," Antoine de Saint-Exupéry","Oreilly","litteraire",5000,1),
+("Un rien peut tout changer","James Clear","Oreilly","litteraire",15000,2),
+("Atomic Habit","James clear","Oreilly","developpement personnel",14000,3),
+("Think python","Allen B. Downey","Oreilly","litteraire",12000,4);
 
 --Creer la table Mouvement_stock
 
@@ -54,13 +54,12 @@ CREATE TABLE mouvement_stock(
     prix_unitaire INT NOT NULL,
     id_stock INT NOT NULL,
     id_livre INT NOT NULL,
-    FOREIGN KEY id_stock REFERENCES stocks(id_stock),
-    FOREIGN KEY id_livre REFERENCES livres(id_livre)
+    FOREIGN KEY (id_stock) REFERENCES stocks(id_stock),
+    FOREIGN KEY (id_livre) REFERENCES livres(id_livre)
 );
 
 --  Inserer les données dans la table mouvement_stock 
 -- consulter l’historique des mouvements de stock
 
-INSERT INTO mouvement_stock VALUES
-(20,'entree',5000,1,1)
-(20,'sortie',5000,1,1)
+
+--INSERT INTO mouvement_stock VALUES(20,"entree",5000,1,1)--
