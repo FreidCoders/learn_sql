@@ -59,11 +59,28 @@ CREATE TABLE mouvement_stock(
 );
 
 --  Inserer les données dans la table mouvement_stock 
--- consulter l’historique des mouvements de stock
-
 
 INSERT INTO mouvement_stock VALUES 
-(20,"entree",5000,1,1),
-(20,"sortie",5000,1,1),
-(10,"entree",2500,2,2),
-(15,"sortie",2500,2,2);
+(1,20,"entree",5000,1,1),
+(2,20,"sortie",5000,1,1),
+(3,10,"entree",2500,2,2),
+(4,15,"sortie",2500,2,2);
+
+-- consulter l’historique des mouvements de stock
+SELECT * FROM mouvement_stock;
+-- Gestion des commandes de Reassort
+
+CREATE TABLE commande_reassort(
+    id_commande_reassort INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    date_commande DATE NULL,
+    statut_commande VARCHAR(10),
+    id_fournisseur INT NOT NULL,
+    FOREIGN KEY (id_fournisseur) REFERENCES fournisseurs(id_fournisseur)
+);
+-- Ajout des commandes de reassort
+INSERT INTO commande_reassort(date_commande,statut_commande,id_fournisseur) VALUES
+("2020-10-15","En cours",1),
+("2020-11-15","Reçue",1);
+
+-- Suivre les commandes de reassort
+SELECT * FROM commande_reassort;
