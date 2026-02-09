@@ -62,4 +62,8 @@ CREATE TABLE mouvement_stock(
 -- consulter l’historique des mouvements de stock
 
 
---INSERT INTO mouvement_stock VALUES(20,"entree",5000,1,1)--
+INSERT INTO mouvement_stock VALUES 
+(20,"entree",5000,1,1),
+(20,"sortie",5000,1,1),
+(10,"entree",2500,2,2),
+(15,"sortie",2500,2,2);
