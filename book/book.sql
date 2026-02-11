@@ -84,3 +84,15 @@ INSERT INTO commande_reassort(date_commande,statut_commande,id_fournisseur) VALU
 
 -- Suivre les commandes de reassort
 SELECT * FROM commande_reassort;
+
+--Ajout de la ligne de commande
+
+CREATE TABLE ligne_de_commande(
+    id_ligne_de_commande INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    quantite_commande INT NOT NULL,
+    id_livre INT NOT NULL,
+    id_commande_reassort INT NOT NULL,
+    FOREIGN KEY (id_livre) REFERENCES livres(id_livre),
+    FOREIGN KEY (id_commande_reassort) REFERENCES commande_reassort(id_commande_reassort)
+);
+
