@@ -1,0 +1,8 @@
+CREATE DATABASE contact;
+
+CREATE TABLE form(
+    id INT PRIMARY KEY NOT NULL,
+    name VARCHAR(254) NOT NULL,
+    email VARCHAR(254) NOT NULL,
+    message TEXT
+);
